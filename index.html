@@ -74,6 +74,23 @@
       background-color: #8e44ad;
       border-radius: 5px;
     }
+
+    /* Responsive layout for mobile */
+    @media (max-width: 640px) {
+      .landing-area {
+        padding: 20px;
+      }
+      .exp-bar {
+        width: 90%;  /* Experience bar width adjusted for mobile */
+      }
+      .big-button {
+        width: 100%;  /* Make buttons full-width on mobile */
+        padding: 12px;
+      }
+      .text-center {
+        text-align: center;
+      }
+    }
   </style>
 </head>
 
@@ -88,30 +105,29 @@
       </span>
     </h1>
 
-    <!-- Level and Exp Information Under KOZA WORLD -->
-    <div class="absolute bottom-32 z-10 w-full text-center">
-      <div class="flex justify-center gap-8 mb-8">
-        <!-- Level and Experience -->
-        <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Level: Loading...</span>
-        <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Exp: Loading...</span>
-      </div>
-      
-      <!-- Experience Bar -->
-      <div class="exp-bar mx-auto mb-8 w-64">
-        <div id="exp-fill" class="exp-fill" style="width: 0%"></div>
-      </div>
-
-      <!-- Buttons -->
-      <div class="space-x-8">
-        <a href="#projects" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
-          PRESS START
-        </a>
-        <a href="#connect" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
-          CONTACT
-        </a>
-      </div>
+    <!-- Buttons -->
+    <div class="space-x-8 mb-8 flex justify-center gap-8">
+      <a href="#projects" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
+        PRESS START
+      </a>
+      <a href="#connect" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
+        CONTACT
+      </a>
     </div>
   </header>
+
+  <!-- Level and Exp Section (Under buttons) -->
+  <section class="text-center">
+    <div class="mb-8">
+      <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Level: Loading...</span>
+      <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Exp: Loading...</span>
+    </div>
+
+    <!-- Experience Bar -->
+    <div class="exp-bar mx-auto mb-8 w-64">
+      <div id="exp-fill" class="exp-fill" style="width: 0%"></div>
+    </div>
+  </section>
 
   <!-- Connect with Me Section -->
   <section id="connect" class="min-h-screen bg-black text-white py-16 flex flex-col items-center justify-center">
@@ -159,20 +175,20 @@
 
   <script>
     // GitHub username
-    const githubUsername = 'KozaWorld';  // Change this to the GitHub username
+    const githubUsername = 'KozaWorld';  // Updated to the correct GitHub username
 
     // Function to fetch GitHub data
     async function fetchGitHubData() {
       try {
         // Fetch repositories (projects)
-        const reposResponse = await fetch(`https://api.github.com/users/$KozaWorld/repos`);
+        const reposResponse = await fetch(`https://api.github.com/users/${githubUsername}/repos`);
         const repos = await reposResponse.json();
         const numberOfRepos = repos.length;  // Number of repositories
 
         // Fetch events (contributions)
-        const eventsResponse = await fetch(`https://api.github.com/users/$KozaWorld/events/public`);
+        const eventsResponse = await fetch(`https://api.github.com/users/${githubUsername}/events/public`);
         const events = await eventsResponse.json();
-        const numberOfContributions = events.length;  // Number of public events (contributions)
+        const numberOfContributions = events.filter(event => event.type === "PushEvent").length;  // Count only PushEvents for contributions
 
         // Calculate XP based on projects and contributions
         const projectXP = numberOfRepos * 50;  // 50 XP per project
