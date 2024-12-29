@@ -64,20 +64,17 @@
   </header>
 
   <!-- Level & Experience Section -->
-  <section>
-<br></br>
-    <center><h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10">
-    <span class="gradient-text color-change"> Player Stats
-      </span>
-    </h1><</center>
-    <div class="text-white mb-8">
-      <div class="flex justify-center items-center gap-4 mb-4">
-        <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold">Level: Loading...</span>
-        <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold">Exp: Loading...</span>
-      </div>
-      </div>
-    </div>
-  </section>
+<div class="text-white mb-8">
+  <div class="flex justify-center items-center gap-4 mb-4">
+    <span id="player-level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold">Level: Loading...</span>
+    <span id="player-exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold">Exp: Loading...</span>
+  </div>
+
+  <div class="relative w-full h-8 bg-gray-600 rounded-full">
+    <div id="exp-bar" class="h-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-full" style="width: 0%;"></div>
+  </div>
+</div>
+
 
   <!-- Connect with Me Section -->
   <section id="connect" class="min-h-screen bg-black text-white py-16 flex flex-col items-center justify-center">
