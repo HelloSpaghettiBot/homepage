@@ -32,9 +32,9 @@
     /* Color changing effect for "WORLD" text */
     @keyframes colorChange {
       0% { color: #ff0000; }
-      25% { color: #ff7f00; }
-      50% { color: #ffff00; }
-      75% { color: #00ff00; }
+      15% { color: #ff7f00; }
+      30% { color: #ffff00; }
+      65% { color: #00ff00; }
       100% { color: #0000ff; }
     }
     .color-change {
@@ -62,19 +62,67 @@
       </a>
     </div>
   </header>
-      <!-- Level & Experience -->
-      <div class="text-white mb-8">
-        <div class="flex justify-center items-center gap-4 mb-4">
-          <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold">Level: Loading...</span>
-          <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold">Exp: Loading...</span>
-        </div>
+</section>
 
-        <div class="relative w-full h-8 bg-gray-600 rounded-full">
-          <div id="exp-bar" class="h-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-full" style="width: 0%;"></div>
-        </div>
-        <p class="mt-2 text-sm text-gray-300">Exp bar: Loading...</p>
-      </div>
-    </div>
+<section>
+   <!-- Level & Experience Section -->
+<div class="text-white mb-8">
+  <div class="flex justify-center items-center gap-4 mb-4">
+    <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold">Level: Loading...</span>
+    <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold">Exp: Loading...</span>
+  </div>
+
+  <div class="relative w-full h-8 bg-gray-600 rounded-full">
+    <div id="exp-bar" class="h-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-full" style="width: 0%;"></div>
+  </div>
+</div>
+
+<style>
+  /* Level and experience section styling */
+  .bg-purple-500 {
+    background-color: #6b46c1;
+  }
+
+  .bg-gradient-to-r {
+    background: linear-gradient(to right, #6b46c1, #d53f8c);
+  }
+
+  .text-white {
+    color: white;
+  }
+
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .rounded-full {
+    border-radius: 9999px;
+  }
+
+  .text-xl {
+    font-size: 1.25rem;
+  }
+
+  .font-semibold {
+    font-weight: 600;
+  }
+
+  .bg-gray-600 {
+    background-color: #4a5568;
+  }
+
+  /* For the experience bar background */
+  #exp-bar {
+    transition: width 0.5s ease;
+  }
+  
+</style>
   </section>
   <!-- Connect with Me Section -->
   <section id="connect" class="min-h-screen bg-black text-white py-16 flex flex-col items-center justify-center">
@@ -130,7 +178,7 @@
         });
       });
     });
-  </script>
+  
     // Fetch GitHub Stats for Level and Experience
     async function fetchGithubStats() {
       try {
