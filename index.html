@@ -65,12 +65,11 @@
 
   <!-- Level & Experience Section -->
   <section>
-    <h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10">
-     Player
-      <span class="gradient-text color-change">
-        Stats
+<br></br>
+    <center><h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10">
+    <span class="gradient-text color-change"> Player Stats
       </span>
-    </h1>
+    </h1><</center>
     <div class="text-white mb-8">
       <div class="flex justify-center items-center gap-4 mb-4">
         <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold">Level: Loading...</span>
@@ -124,35 +123,48 @@
     </div>
   </section>
 
-  <script>
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+<script>
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
       });
     });
-  
-    // Fetch GitHub Stats for Level and Experience
-    async function fetchGithubStats() {
-      try {
-        const response = await fetch('https://api.github.com/users/KozaWorld');
-        const data = await response.json();
+  });
 
-        const level = data.public_repos + 10;  // Including manual projects in level calculation
-        const xp = level * 10;
+  // Fetch GitHub Stats for Level and Experience
+  async function fetchGithubStats() {
+    try {
+      const response = await fetch('https://api.github.com/users/KozaWorld');
+      const data = await response.json();
 
-        document.getElementById('level').textContent = `Level: ${level}`;
-        document.getElementById('exp').textContent = `Exp: ${xp}`;
-        document.getElementById('exp-bar').style.width = `${Math.min(xp, 100)}%`;
-      } catch (error) {
-        console.error('Error fetching GitHub stats:', error);
-      }
+      // Calculate XP based on projects and contributions
+      const projects = data.public_repos;  // Number of public repositories
+      const contributions = data.contributions;  // Total contributions (commits)
+      
+      // Calculate experience
+      const projectXP = projects * 50;  // 50 XP per project
+      const contributionXP = contributions * 10;  // 10 XP per contribution
+      const totalXP = projectXP + contributionXP;
+
+      // Calculate level based on XP
+      let level = Math.floor(totalXP / 100);  // Each level increases by 100 XP
+      let expToNextLevel = totalXP % 100;  // Experience left for the next level
+
+      // Set the level and experience text
+      document.getElementById('level').textContent = `Level: ${level + 1}`;  // Adding 1 because level 1 starts at 100 XP
+      document.getElementById('exp').textContent = `Exp: ${expToNextLevel}`;
+
+      // Update the experience bar
+      document.getElementById('exp-bar').style.width = `${(totalXP % 100) * 100 / 100}%`;
+    } catch (error) {
+      console.error('Error fetching GitHub stats:', error);
     }
+  }
 
-    fetchGithubStats();
-  </script>
+  fetchGithubStats();
+</script>
 </body>
 </html>
