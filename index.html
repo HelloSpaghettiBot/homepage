@@ -17,6 +17,7 @@
       opacity: 0.5;
       transition: background 0.5s ease;
     }
+
     /* Blink animation for buttons */
     @keyframes blink {
       0%, 100% {
@@ -29,6 +30,7 @@
     .blinking-text {
       animation: blink 1.5s infinite;
     }
+
     /* Color changing effect for "WORLD" text */
     @keyframes colorChange {
       0% { color: #ff0000; }
@@ -41,48 +43,21 @@
       animation: colorChange 4s infinite;
     }
 
-    /* Level and experience section styling */
-    .bg-purple-500 {
-      background-color: #6b46c1;
+    /* Player 2 font */
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    .player2-font {
+      font-family: 'Press Start 2P', cursive;
     }
 
-    .bg-gradient-to-r {
-      background: linear-gradient(to right, #6b46c1, #d53f8c);
+    /* Smaller level/exp text */
+    .small-text {
+      font-size: 0.875rem;
     }
 
-    .text-white {
-      color: white;
-    }
-
-    .px-6 {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-
-    .py-4 {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    }
-
-    .rounded-full {
-      border-radius: 9999px;
-    }
-
-    .text-xl {
+    /* Styling for the buttons */
+    .big-button {
+      padding: 16px 32px;
       font-size: 1.25rem;
-    }
-
-    .font-semibold {
-      font-weight: 600;
-    }
-
-    .bg-gray-600 {
-      background-color: #4a5568;
-    }
-
-    /* For the experience bar background */
-    #exp-bar {
-      transition: width 0.5s ease;
     }
   </style>
 </head>
@@ -97,30 +72,28 @@
         WORLD
       </span>
     </h1>
-
-    <!-- Buttons and Level Info Section -->
-    <div class="text-center absolute bottom-16 z-10 space-y-4">
-      <!-- Buttons (Press Start and Contact) -->
-      <a href="#projects" class="mt-4 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text text-2xl">
+    <div class="text-center absolute top-32 z-10 space-y-4">
+      <a href="#projects" class="mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
         PRESS START
       </a>
-      <a href="#connect" class="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text text-2xl">
+      <a href="#connect" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
         CONTACT
       </a>
-      
-      <!-- Level and Experience Information -->
-      <div class="mt-6">
-        <div class="flex justify-center items-center gap-6 mb-4">
-          <span id="player-level" class="bg-purple-500 px-6 py-4 rounded-full text-2xl font-semibold">Level: Loading...</span>
-          <span id="player-exp" class="bg-purple-500 px-6 py-4 rounded-full text-2xl font-semibold">Exp: Loading...</span>
-        </div>
-
-        <div class="relative w-full h-8 bg-gray-600 rounded-full">
-          <div id="exp-bar" class="h-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-full" style="width: 0%;"></div>
-        </div>
-      </div>
     </div>
   </header>
+
+  <!-- Level & Experience Section -->
+  <section class="text-white mb-8">
+    <div class="flex justify-center items-center gap-4 mb-4">
+      <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold player2-font small-text">Level: Loading...</span>
+      <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold player2-font small-text">Exp: Loading...</span>
+    </div>
+
+    <div class="relative w-full h-8 bg-gray-600 rounded-full">
+      <div id="exp-bar" class="h-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-full" style="width: 0%;"></div>
+    </div>
+  </section>
+
 
   <!-- Connect with Me Section -->
   <section id="connect" class="min-h-screen bg-black text-white py-16 flex flex-col items-center justify-center">
