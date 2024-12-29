@@ -54,14 +54,14 @@
       color: white;
     }
 
-    .px-4 {
-      padding-left: 1rem;
-      padding-right: 1rem;
+    .px-6 {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
     }
 
-    .py-2 {
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
+    .py-4 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
     }
 
     .rounded-full {
@@ -97,29 +97,30 @@
         WORLD
       </span>
     </h1>
-    <div class="text-center absolute bottom-8 z-10 space-y-4">
-      <a href="#projects" class="mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text">
+
+    <!-- Buttons and Level Info Section -->
+    <div class="text-center absolute bottom-16 z-10 space-y-4">
+      <!-- Buttons (Press Start and Contact) -->
+      <a href="#projects" class="mt-4 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text text-2xl">
         PRESS START
       </a>
-      <a href="#connect" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text">
+      <a href="#connect" class="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text text-2xl">
         CONTACT
       </a>
-    </div>
-    <div class="text-white mb-8">
-      <div class="flex justify-center items-center gap-4 mb-4">
-        <span id="player-level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold">Level: Loading...</span>
-        <span id="player-exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold">Exp: Loading...</span>
-      </div>
+      
+      <!-- Level and Experience Information -->
+      <div class="mt-6">
+        <div class="flex justify-center items-center gap-6 mb-4">
+          <span id="player-level" class="bg-purple-500 px-6 py-4 rounded-full text-2xl font-semibold">Level: Loading...</span>
+          <span id="player-exp" class="bg-purple-500 px-6 py-4 rounded-full text-2xl font-semibold">Exp: Loading...</span>
+        </div>
 
-      <div class="relative w-full h-8 bg-gray-600 rounded-full">
-        <div id="exp-bar" class="h-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-full" style="width: 0%;"></div>
+        <div class="relative w-full h-8 bg-gray-600 rounded-full">
+          <div id="exp-bar" class="h-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-full" style="width: 0%;"></div>
+        </div>
       </div>
     </div>
-
   </header>
-
-  <!-- Level & Experience Section -->
-
 
   <!-- Connect with Me Section -->
   <section id="connect" class="min-h-screen bg-black text-white py-16 flex flex-col items-center justify-center">
