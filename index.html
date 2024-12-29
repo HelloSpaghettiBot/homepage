@@ -36,7 +36,7 @@
 <body class="bg-black text-white p-8 min-h-screen">
 
   <!-- Header Section -->
-  <header class="text-center mb-16 relative h-screen flex items-center justify-center">
+  <header class="text-center mb-16 relative">
     <div id="glowEffect" class="absolute inset-0 blur-[100px] opacity-50"></div>
     <h1 class="text-6xl font-bold mb-4 relative">
       KOZA
@@ -44,13 +44,17 @@
         WORLD
       </span>
     </h1>
-    <button onclick="scrollToProjects()" class="mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition">
-      PRESS START TO EXPLORE
-    </button>
   </header>
 
+  <!-- Navigation Button to Projects -->
+  <div class="text-center mb-16">
+    <a href="#projects" class="mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition">
+      PRESS START TO EXPLORE
+    </a>
+  </div>
+
   <!-- Stats Section -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 h-screen flex items-center justify-center">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
     <div class="bg-gradient-to-r from-purple-900 to-purple-700 p-6 rounded-lg text-center">
       <h3 class="text-xl font-bold mb-2">Repositories</h3>
       <div class="w-full bg-gray-700 rounded-full h-4">
@@ -68,22 +72,22 @@
   </div>
 
   <!-- Projects Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 h-screen" id="projects">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-16" id="projects">
     <!-- Projects will be added dynamically -->
   </div>
 
   <!-- Contact Section -->
-  <footer class="text-center h-screen flex items-center justify-center">
+  <footer class="text-center">
     <h2 class="text-2xl font-bold mb-4">CONNECT WITH ME</h2>
     <div class="flex justify-center gap-6">
-      <a href="https://github.com/KozaWorld" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors">
-        <svg class="lucide-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><use href="#user"></use></svg>
+      <a href="https://twitter.com/KozaWorld" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors">
+        <svg class="lucide-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><use href="#twitter"></use></svg>
       </a>
-      <a href="#" class="hover:text-purple-400 transition-colors">
+      <a href="mailto:youremail@example.com" class="hover:text-purple-400 transition-colors">
         <svg class="lucide-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><use href="#mail"></use></svg>
       </a>
-      <a href="https://kozacreations.itch.io" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors">
-        <svg class="lucide-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><use href="#ghost"></use></svg>
+      <a href="https://kozacreations.com" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors">
+        <svg class="lucide-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><use href="#globe"></use></svg>
       </a>
     </div>
   </footer>
@@ -97,12 +101,6 @@
       glowEffect.style.background = `radial-gradient(circle, ${colors[colorIndex]} 0%, transparent 70%)`;
       colorIndex = (colorIndex + 1) % colors.length;
     }, 2000);
-
-    // Scroll to Projects
-    function scrollToProjects() {
-      const projectsSection = document.getElementById('projects');
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
-    }
 
     // Fetch GitHub Stats and Update Bars
     async function fetchGithubStats() {
