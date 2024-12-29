@@ -29,6 +29,17 @@
     .blinking-text {
       animation: blink 1.5s infinite;
     }
+    /* Color changing effect for "WORLD" text */
+    @keyframes colorChange {
+      0% { color: #ff0000; }
+      25% { color: #ff7f00; }
+      50% { color: #ffff00; }
+      75% { color: #00ff00; }
+      100% { color: #0000ff; }
+    }
+    .color-change {
+      animation: colorChange 4s infinite;
+    }
   </style>
 </head>
 
@@ -38,16 +49,16 @@
   <header class="landing-area text-center mb-16 relative flex items-center justify-center h-screen">
     <h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10">
       KOZA
-      <span class="gradient-text">
+      <span class="gradient-text color-change">
         WORLD
       </span>
     </h1>
     <div class="text-center absolute bottom-8 z-10 space-y-4">
-      <a href="#connect" class="mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text">
+      <a href="#projects" class="mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text">
         PRESS START
       </a>
-      <a href="#projects" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text">
-        VIEW PROJECTS
+      <a href="#connect" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text">
+        CONTACT
       </a>
     </div>
   </header>
@@ -70,8 +81,8 @@
 
   <!-- Projects Section -->
   <section id="projects" class="min-h-screen bg-gray-900 py-16 flex flex-col items-center justify-center">
+    <h2 class="text-4xl font-bold text-white mb-8">PROJECTS</h2>
     <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-      <!-- Dynamically added projects will appear here -->
       <div class="bg-gradient-to-br from-gray-800 to-gray-700 p-6 rounded-lg hover:shadow-xl hover:shadow-purple-500/20 transition-all">
         <h3 class="text-xl font-bold mb-2 text-purple-400">TextRPG Maker</h3>
         <p class="mb-4 text-gray-300">A powerful engine for creating text-based RPG adventures.</p>
