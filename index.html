@@ -12,41 +12,17 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Color-changing background for the landing area with fade-out effect into black */
-    @keyframes colorChange {
-      0% { background: linear-gradient(45deg, #ff6a00, #ee0979); }
-      25% { background: linear-gradient(45deg, #00c6ff, #0072ff); }
-      50% { background: linear-gradient(45deg, #ff4b2b, #ff416c); }
-      75% { background: linear-gradient(45deg, #ffbc00, #ff6a00); }
-      100% { background: linear-gradient(45deg, #ee0979, #ff6a00); }
-    }
-
-    /* Apply the animation to the landing section */
-    .landing-area {
-      animation: colorChange 10s infinite alternate;
-      position: relative;
-      background: linear-gradient(45deg, #ff6a00, #ee0979);
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    /* Create the fade effect into black */
-    .landing-area::before {
-      content: "";
+    /* Custom glow effect */
+    .glow {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 40%; /* Adjust this height as needed for fade out */
-      background: linear-gradient(to top, black, transparent);
-      z-index: 1;
+      inset: 0;
+      blur: 100px;
+      opacity: 0.5;
+      transition: background 0.5s ease;
     }
-
-    /* Bounce effect for the start button */
     .animate-bounce {
       animation: bounce 1.5s infinite;
     }
-
     @keyframes bounce {
       0%, 100% {
         transform: translateY(0);
@@ -55,17 +31,9 @@
         transform: translateY(-10px);
       }
     }
-
-    /* Ensure the body has no borders and fits content */
-    body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      height: 100%;
-      background-color: #000;
-    }
   </style>
 </head>
+
 <body class="bg-black text-white p-0 m-0">
 
   <!-- Header Section -->
