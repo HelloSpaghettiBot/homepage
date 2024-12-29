@@ -20,9 +20,29 @@
       opacity: 0.5;
       transition: background 0.5s ease;
     }
+
+    /* Blinking effect for Press Start */
+    @keyframes blink {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .blink {
+      animation: blink 1s infinite;
+    }
+
+    /* Animation for bounce */
     .animate-bounce {
       animation: bounce 1.5s infinite;
     }
+
     @keyframes bounce {
       0%, 100% {
         transform: translateY(0);
@@ -46,7 +66,7 @@
       </span>
     </h1>
     <div class="text-center mb-16 absolute bottom-4 z-10">
-      <a href="#projects" class="mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition">
+      <a href="#projects" class="mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blink">
         PRESS START TO EXPLORE
       </a>
     </div>
@@ -87,13 +107,20 @@
     <h2 class="text-4xl font-bold mb-8">CONNECT WITH ME</h2>
     <div class="flex gap-8 text-3xl">
       <a href="https://twitter.com/KozaWorld" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors">
-        <svg class="lucide-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><use href="#twitter"></use></svg>
+        <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M23 3a10.9 10.9 0 01-3.08.84A5.69 5.69 0 0022.46 2a10.94 10.94 0 01-3.46 1.31A5.6 5.6 0 0016.61 0c-3.11 0-5.64 2.53-5.64 5.64 0 .44.05.87.14 1.28A16.03 16.03 0 011.68 3.15 5.65 5.65 0 003.47 8.91a5.6 5.6 0 01-2.55-.7v.07c0 2.73 1.94 5.03 4.51 5.56a5.63 5.63 0 01-2.51.1c.71 2.22 2.76 3.83 5.18 3.88a11.33 11.33 0 01-7.03 2.43c-.46 0-.91-.03-1.36-.08A15.92 15.92 0 007.7 21c10.32 0 15.99-8.54 15.99-15.99 0-.24-.01-.49-.02-.74A11.37 11.37 0 0023 3z"></path>
+        </svg>
       </a>
       <a href="mailto:koza@example.com" class="hover:text-purple-400 transition-colors">
-        <svg class="lucide-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><use href="#mail"></use></svg>
+        <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 12l9-5-9-5-9 5 9 5z"></path>
+          <path d="M12 12v9m0 0l9-5m-9 5l-9-5"></path>
+        </svg>
       </a>
       <a href="https://kozacreations.itch.io" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors">
-        <svg class="lucide-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><use href="#ghost"></use></svg>
+        <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 4v16h20V4H2zm18 14H4V6h16v12z"></path>
+        </svg>
       </a>
     </div>
   </section>
