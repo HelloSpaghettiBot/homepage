@@ -66,13 +66,8 @@
 
   <!-- Header Section -->
   <header class="landing-area text-center mb-16 relative flex items-center justify-center h-screen">
-    <h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10">
-      KOZA
-      <span class="gradient-text color-change">
-        WORLD
-      </span>
-    </h1>
-    <div class="text-center absolute top-32 z-10 space-y-4">
+    <!-- Press Start & Contact Buttons placed above Koza World -->
+    <div class="text-center absolute top-16 z-10 space-y-4">
       <a href="#projects" class="mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
         PRESS START
       </a>
@@ -80,9 +75,17 @@
         CONTACT
       </a>
     </div>
+
+    <!-- Koza World Title -->
+    <h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10">
+      KOZA
+      <span class="gradient-text color-change">
+        WORLD
+      </span>
+    </h1>
   </header>
 
-  <!-- Level & Experience Section -->
+  <!-- Level & Experience Section placed below Koza World Title -->
   <section class="text-white mb-8">
     <div class="flex justify-center items-center gap-4 mb-4">
       <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold player2-font small-text">Level: Loading...</span>
@@ -93,7 +96,6 @@
       <div id="exp-bar" class="h-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-full" style="width: 0%;"></div>
     </div>
   </section>
-
 
   <!-- Connect with Me Section -->
   <section id="connect" class="min-h-screen bg-black text-white py-16 flex flex-col items-center justify-center">
@@ -156,8 +158,8 @@
     let expToNextLevel = totalXP % 100;  // Remaining XP to reach the next level
 
     // Update the level and experience display
-    document.getElementById('player-level').textContent = `Level: ${level + 1}`;  // Display level (Level 1 starts at 100 XP)
-    document.getElementById('player-exp').textContent = `Exp: ${expToNextLevel}`;  // Display remaining XP
+    document.getElementById('level').textContent = `Level: ${level + 1}`;  // Display level (Level 1 starts at 100 XP)
+    document.getElementById('exp').textContent = `Exp: ${expToNextLevel}`;  // Display remaining XP
     
     // Update the experience bar
     document.getElementById('exp-bar').style.width = `${(expToNextLevel) * 100 / 100}%`;  // Experience progress
