@@ -75,7 +75,25 @@
       border-radius: 5px;
     }
 
-    /* Responsive layout for mobile */
+    /* Card/Box for Level and Exp */
+    .card {
+      background-color: #222;
+      border-radius: 10px;
+      padding: 16px;
+      max-width: 400px;
+      margin: 0 auto;
+      border: 2px solid #8e44ad;
+    }
+
+    /* Center sections on mobile and fill screen height */
+    section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* Full screen height for each section */
+    }
+
+    /* Mobile responsive */
     @media (max-width: 640px) {
       .landing-area {
         padding: 20px;
@@ -89,6 +107,10 @@
       }
       .text-center {
         text-align: center;
+      }
+      .card {
+        width: 90%;  /* Make the card width more responsive */
+        margin: 0 auto;
       }
     }
   </style>
@@ -104,8 +126,10 @@
         WORLD
       </span>
     </h1>
+  </header>
 
-    <!-- Buttons -->
+  <!-- Buttons Section (now directly under the header) -->
+  <section class="text-center">
     <div class="space-x-8 mb-8 flex justify-center gap-8">
       <a href="#projects" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
         PRESS START
@@ -114,18 +138,20 @@
         CONTACT
       </a>
     </div>
-  </header>
+  </section>
 
-  <!-- Level and Exp Section (Under buttons) -->
+  <!-- Level and Exp Section in Card/Box -->
   <section class="text-center">
-    <div class="mb-8">
-      <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Level: Loading...</span>
-      <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Exp: Loading...</span>
-    </div>
+    <div class="card mb-8">
+      <div class="flex justify-between mb-4">
+        <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Level: Loading...</span>
+        <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Exp: Loading...</span>
+      </div>
 
-    <!-- Experience Bar -->
-    <div class="exp-bar mx-auto mb-8 w-64">
-      <div id="exp-fill" class="exp-fill" style="width: 0%"></div>
+      <!-- Experience Bar -->
+      <div class="exp-bar mx-auto mb-4">
+        <div id="exp-fill" class="exp-fill" style="width: 0%"></div>
+      </div>
     </div>
   </section>
 
