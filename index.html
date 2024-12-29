@@ -8,6 +8,9 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Import Press Start 2P font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
   <style>
     /* Custom glow effect */
     .glow {
@@ -43,9 +46,8 @@
       animation: colorChange 4s infinite;
     }
 
-    /* Retro font - Press Start 2P */
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-    .retro-font {
+    /* Retro pixel font - Press Start 2P */
+    body {
       font-family: 'Press Start 2P', cursive;
     }
 
@@ -79,7 +81,7 @@
 
   <!-- Header Section -->
   <header class="landing-area text-center mb-16 relative flex items-center justify-center h-screen">
-    <h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10 retro-font">
+    <h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10">
       KOZA
       <span class="gradient-text color-change">
         WORLD
@@ -90,21 +92,21 @@
     <div class="absolute bottom-32 z-10 w-full text-center">
       <div class="flex justify-center gap-8 mb-8">
         <!-- Level and Experience -->
-        <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold retro-font small-text">Level: Loading...</span>
-        <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold retro-font small-text">Exp: Loading...</span>
+        <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Level: Loading...</span>
+        <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Exp: Loading...</span>
       </div>
       
       <!-- Experience Bar -->
-      <div class="exp-bar mx-auto mb-8">
+      <div class="exp-bar mx-auto mb-8 w-64">
         <div id="exp-fill" class="exp-fill" style="width: 0%"></div>
       </div>
 
       <!-- Buttons -->
       <div class="space-x-8">
-        <a href="#projects" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button retro-font">
+        <a href="#projects" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
           PRESS START
         </a>
-        <a href="#connect" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button retro-font">
+        <a href="#connect" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
           CONTACT
         </a>
       </div>
@@ -113,15 +115,15 @@
 
   <!-- Connect with Me Section -->
   <section id="connect" class="min-h-screen bg-black text-white py-16 flex flex-col items-center justify-center">
-    <h2 class="text-4xl font-bold mb-8 retro-font">CONNECT WITH ME</h2>
+    <h2 class="text-4xl font-bold mb-8">CONNECT WITH ME</h2>
     <div class="flex flex-col sm:flex-row gap-8 text-3xl">
-      <a href="https://twitter.com/Kodytron" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text retro-font">
+      <a href="https://twitter.com/Kodytron" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text">
         Twitter
       </a>
-      <a href="mailto:kody@kozaworld.com" class="hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text retro-font">
+      <a href="mailto:kody@kozaworld.com" class="hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text">
         Email
       </a>
-      <a href="https://kozacreations.itch.io" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text retro-font">
+      <a href="https://kozacreations.itch.io" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text">
         Itch.io
       </a>
     </div>
@@ -129,26 +131,26 @@
 
   <!-- Projects Section -->
   <section id="projects" class="min-h-screen bg-gray-900 py-16 flex flex-col items-center justify-center">
-    <h2 class="text-4xl font-bold text-white mb-8 retro-font">PROJECTS</h2>
+    <h2 class="text-4xl font-bold text-white mb-8">PROJECTS</h2>
     <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
       <div class="bg-gradient-to-br from-gray-800 to-gray-700 p-6 rounded-lg hover:shadow-xl hover:shadow-purple-500/20 transition-all">
-        <h3 class="text-xl font-bold mb-2 text-purple-400 retro-font">TextRPG Maker</h3>
-        <p class="mb-4 text-gray-300 retro-font">A powerful engine for creating text-based RPG adventures.</p>
-        <a href="https://kozacreations.itch.io/text-based-rpg-kozaengine" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 retro-font">
+        <h3 class="text-xl font-bold mb-2 text-purple-400">TextRPG Maker</h3>
+        <p class="mb-4 text-gray-300">A powerful engine for creating text-based RPG adventures.</p>
+        <a href="https://kozacreations.itch.io/text-based-rpg-kozaengine" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300">
           View Project
         </a>
       </div>
       <div class="bg-gradient-to-br from-gray-800 to-gray-700 p-6 rounded-lg hover:shadow-xl hover:shadow-purple-500/20 transition-all">
-        <h3 class="text-xl font-bold mb-2 text-purple-400 retro-font">EoServ Private Server Launcher</h3>
-        <p class="mb-4 text-gray-300 retro-font">Custom launcher for managing and connecting to private Endless Online servers.</p>
-        <a href="https://kozacreations.itch.io/eoserv-custom-launcher" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 retro-font">
+        <h3 class="text-xl font-bold mb-2 text-purple-400">EoServ Private Server Launcher</h3>
+        <p class="mb-4 text-gray-300">Custom launcher for managing and connecting to private Endless Online servers.</p>
+        <a href="https://kozacreations.itch.io/eoserv-custom-launcher" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300">
           View Project
         </a>
       </div>
       <div class="bg-gradient-to-br from-gray-800 to-gray-700 p-6 rounded-lg hover:shadow-xl hover:shadow-purple-500/20 transition-all">
-        <h3 class="text-xl font-bold mb-2 text-purple-400 retro-font">Endless Online Encyclopedia</h3>
-        <p class="mb-4 text-gray-300 retro-font">Comprehensive database and reference guide for Endless Online.</p>
-        <a href="https://kozacreations.itch.io/eoencyclopedia" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 retro-font">
+        <h3 class="text-xl font-bold mb-2 text-purple-400">Endless Online Encyclopedia</h3>
+        <p class="mb-4 text-gray-300">Comprehensive database and reference guide for Endless Online.</p>
+        <a href="https://kozacreations.itch.io/eoencyclopedia" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300">
           View Project
         </a>
       </div>
@@ -156,27 +158,45 @@
   </section>
 
   <script>
-    // Sample player data (replace with dynamic fetch from backend or user data)
-    const playerData = {
-      projects: 10,       // Number of projects the player has
-      contributions: 25,  // Number of contributions (or kills, tasks completed)
-    };
+    // GitHub username
+    const githubUsername = 'KozaWorld';  // Change this to the GitHub username
 
-    // Calculate XP based on player stats
-    const projectXP = playerData.projects * 50;  // 50 XP per project
-    const contributionXP = playerData.contributions * 10;  // 10 XP per contribution
-    const totalXP = projectXP + contributionXP;
+    // Function to fetch GitHub data
+    async function fetchGitHubData() {
+      try {
+        // Fetch repositories (projects)
+        const reposResponse = await fetch(`https://api.github.com/users/$KozaWorld/repos`);
+        const repos = await reposResponse.json();
+        const numberOfRepos = repos.length;  // Number of repositories
 
-    // Calculate level based on XP
-    let level = Math.floor(totalXP / 100);  // Each level increases by 100 XP
-    let expToNextLevel = totalXP % 100;  // Remaining XP to reach the next level
+        // Fetch events (contributions)
+        const eventsResponse = await fetch(`https://api.github.com/users/$KozaWorld/events/public`);
+        const events = await eventsResponse.json();
+        const numberOfContributions = events.length;  // Number of public events (contributions)
 
-    // Update the level and experience display
-    document.getElementById('level').textContent = `Level: ${level + 1}`;  // Display level (Level 1 starts at 100 XP)
-    document.getElementById('exp').textContent = `Exp: ${expToNextLevel}`;  // Display remaining XP
-    
-    // Update the experience bar
-    document.getElementById('exp-bar').style.width = `${(expToNextLevel) * 100 / 100}%`;  // Experience progress
+        // Calculate XP based on projects and contributions
+        const projectXP = numberOfRepos * 50;  // 50 XP per project
+        const contributionXP = numberOfContributions * 10;  // 10 XP per contribution
+        const totalXP = projectXP + contributionXP;
+
+        // Calculate level based on XP
+        let level = Math.floor(totalXP / 100);  // Each level increases by 100 XP
+        let expToNextLevel = totalXP % 100;  // Remaining XP to reach the next level
+
+        // Update the level and experience display
+        document.getElementById('level').textContent = `Level: ${level + 1}`;  // Display level (Level 1 starts at 100 XP)
+        document.getElementById('exp').textContent = `Exp: ${expToNextLevel}`;  // Display remaining XP
+
+        // Update the experience bar
+        document.getElementById('exp-fill').style.width = `${(expToNextLevel) * 100 / 100}%`;  // Experience progress
+
+      } catch (error) {
+        console.error('Error fetching GitHub data:', error);
+      }
+    }
+
+    // Call the function to fetch data
+    fetchGitHubData();
   </script>
 
 </body>
