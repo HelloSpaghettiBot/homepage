@@ -50,19 +50,35 @@
 <body class="bg-black text-white">
 
   <!-- Header Section -->
-  <header class="landing-area text-center mb-16 relative flex items-center justify-center full-screen">
-    <h1 class="text-6xl font-bold mb-4 relative z-10">
-      KOZA
-      <span class="gradient-text">
-        WORLD
-      </span>
-    </h1>
-    <div class="text-center absolute bottom-4 z-10">
-      <a href="#connect" class="mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text">
-        PRESS START
-      </a>
-    </div>
-  </header>
+
+Here's the code for the button for the "Projects" section that will take the user directly to that section of the page. I'll add it next to the "Press Start" button in the header:
+
+Code for "Projects" Button:
+html
+Copy code
+<a href="#projects" class="mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text">
+  VIEW PROJECTS
+</a>
+Full Updated Header with "Projects" Button:
+html
+Copy code
+<header class="landing-area text-center mb-16 relative flex items-center justify-center full-screen">
+  <h1 class="text-6xl font-bold mb-4 relative z-10">
+    KOZA
+    <span class="gradient-text">
+      WORLD
+    </span>
+  </h1>
+  <div class="text-center absolute bottom-4 z-10">
+    <!-- New Projects Button -->
+    <a href="#projects" class="mt-4 px-10 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text">
+     Press Start
+    </a>
+    <a href="#connect" class="mt-4 px-10 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text">
+      Contact Us
+    </a>
+  </div>
+</header>
 
   <!-- Level and Experience Section -->
   <section id="level-experience" class="min-h-screen bg-gray-800 py-16 flex items-center justify-center full-screen">
