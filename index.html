@@ -20,9 +20,25 @@
       opacity: 0.5;
       transition: background 0.5s ease;
     }
+
+    /* Color-changing background for the landing area */
+    @keyframes colorChange {
+      0% { background: linear-gradient(45deg, #ff6a00, #ee0979); }
+      25% { background: linear-gradient(45deg, #00c6ff, #0072ff); }
+      50% { background: linear-gradient(45deg, #ff4b2b, #ff416c); }
+      75% { background: linear-gradient(45deg, #ffbc00, #ff6a00); }
+      100% { background: linear-gradient(45deg, #ee0979, #ff6a00); }
+    }
+
+    /* Apply the animation to the landing section */
+    .landing-area {
+      animation: colorChange 10s infinite alternate;
+    }
+
     .animate-bounce {
       animation: bounce 1.5s infinite;
     }
+
     @keyframes bounce {
       0%, 100% {
         transform: translateY(0);
@@ -36,7 +52,7 @@
 <body class="bg-black text-white p-8 min-h-screen">
 
   <!-- Header Section -->
-  <header class="text-center mb-16 relative min-h-screen flex items-center justify-center">
+  <header class="landing-area text-center mb-16 relative min-h-screen flex items-center justify-center">
     <div id="glowEffect" class="absolute inset-0 blur-[100px] opacity-50"></div>
     <h1 class="text-6xl font-bold mb-4 relative">
       KOZA
