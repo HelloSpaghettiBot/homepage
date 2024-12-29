@@ -62,7 +62,20 @@
       </a>
     </div>
   </header>
+      <!-- Level & Experience -->
+      <div class="text-white mb-8">
+        <div class="flex justify-center items-center gap-4 mb-4">
+          <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold">Level: Loading...</span>
+          <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold">Exp: Loading...</span>
+        </div>
 
+        <div class="relative w-full h-8 bg-gray-600 rounded-full">
+          <div id="exp-bar" class="h-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-full" style="width: 0%;"></div>
+        </div>
+        <p class="mt-2 text-sm text-gray-300">Exp bar: Loading...</p>
+      </div>
+    </div>
+  </section>
   <!-- Connect with Me Section -->
   <section id="connect" class="min-h-screen bg-black text-white py-16 flex flex-col items-center justify-center">
     <h2 class="text-4xl font-bold mb-8">CONNECT WITH ME</h2>
@@ -118,6 +131,24 @@
       });
     });
   </script>
+    // Fetch GitHub Stats for Level and Experience
+    async function fetchGithubStats() {
+      try {
+        const response = await fetch('https://api.github.com/users/KozaWorld');
+        const data = await response.json();
 
+        const level = data.public_repos + projects.length;  // Including manual projects in level calculation
+        const xp = level * 10;
+
+        document.getElementById('level').textContent = `Level: ${level}`;
+        document.getElementById('exp').textContent = `Exp: ${xp}`;
+        document.getElementById('exp-bar').style.width = `${Math.min(xp, 100)}%`;
+      } catch (error) {
+        console.error('Error fetching GitHub stats:', error);
+      }
+    }
+
+    fetchGithubStats();
+  </script>
 </body>
 </html>
