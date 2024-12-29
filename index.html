@@ -53,7 +53,7 @@
 
     /* Smaller level/exp text */
     .small-text {
-      font-size: 0.75rem;  /* Made the text smaller */
+      font-size: 0.875rem;
     }
 
     /* Styling for the buttons */
@@ -113,18 +113,13 @@
         margin: 0 auto;
       }
     }
-
-    /* Position the buttons closer to the header */
-    .space-x-8 {
-      margin-top: -50px; /* Adjusted margin to move buttons higher */
-    }
   </style>
 </head>
 
 <body class="bg-black text-white m-0 p-0">
 
   <!-- Header Section -->
-  <header class="landing-area text-center mb-16 relative flex items-center justify-center h-screen">
+  <header class="landing-area text-center mb-16 relative flex flex-col items-center justify-center h-screen">
     <h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10">
       KOZA
       <span class="gradient-text color-change">
@@ -132,24 +127,26 @@
       </span>
     </h1>
 
-    <div class="space-x-8 mb-8 flex justify-center gap-8">
+    <!-- Buttons and Level/Experience Info under the title -->
+    <div class="space-x-8 mb-8 flex flex-col items-center gap-8">
       <a href="#projects" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
         PRESS START
       </a>
       <a href="#connect" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
         CONTACT
       </a>
-    </div>
 
-    <div class="card mb-8">
-      <div class="flex justify-between mb-4">
-        <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Level: Loading...</span>
-        <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Exp: Loading...</span>
-      </div>
+      <!-- Level and Experience Card -->
+      <div class="card mb-8">
+        <div class="flex justify-between mb-4">
+          <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Level: Loading...</span>
+          <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Exp: Loading...</span>
+        </div>
 
-      <!-- Experience Bar -->
-      <div class="exp-bar mx-auto mb-4">
-        <div id="exp-fill" class="exp-fill" style="width: 0%"></div>
+        <!-- Experience Bar -->
+        <div class="exp-bar mx-auto mb-4">
+          <div id="exp-fill" class="exp-fill" style="width: 0%"></div>
+        </div>
       </div>
     </div>
   </header>
