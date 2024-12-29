@@ -66,48 +66,42 @@
 
   <!-- Header Section -->
   <header class="landing-area text-center mb-16 relative flex items-center justify-center h-screen">
-    <!-- Press Start & Contact Buttons placed above Koza World -->
-    <div class="text-center absolute top-16 z-10 space-y-4">
-      <a href="#projects" class="mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
-        PRESS START
-      </a>
-      <a href="#connect" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
-        CONTACT
-      </a>
-    </div>
-
-    <!-- Koza World Title -->
-    <h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10">
+    <h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10 player2-font">
       KOZA
       <span class="gradient-text color-change">
         WORLD
       </span>
     </h1>
+    <div class="absolute top-32 z-10 space-y-8 w-full text-center">
+      <div class="flex justify-center gap-8 mb-8">
+        <!-- Level and Experience -->
+        <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold player2-font small-text">Level: Loading...</span>
+        <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold player2-font small-text">Exp: Loading...</span>
+      </div>
+
+      <!-- Buttons -->
+      <div class="space-x-8">
+        <a href="#projects" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button player2-font">
+          PRESS START
+        </a>
+        <a href="#connect" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button player2-font">
+          CONTACT
+        </a>
+      </div>
+    </div>
   </header>
-
-  <!-- Level & Experience Section placed below Koza World Title -->
-  <section class="text-white mb-8">
-    <div class="flex justify-center items-center gap-4 mb-4">
-      <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold player2-font small-text">Level: Loading...</span>
-      <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold player2-font small-text">Exp: Loading...</span>
-    </div>
-
-    <div class="relative w-full h-8 bg-gray-600 rounded-full">
-      <div id="exp-bar" class="h-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-full" style="width: 0%;"></div>
-    </div>
-  </section>
 
   <!-- Connect with Me Section -->
   <section id="connect" class="min-h-screen bg-black text-white py-16 flex flex-col items-center justify-center">
-    <h2 class="text-4xl font-bold mb-8">CONNECT WITH ME</h2>
+    <h2 class="text-4xl font-bold mb-8 player2-font">CONNECT WITH ME</h2>
     <div class="flex flex-col sm:flex-row gap-8 text-3xl">
-      <a href="https://twitter.com/Kodytron" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text">
+      <a href="https://twitter.com/Kodytron" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text player2-font">
         Twitter
       </a>
-      <a href="mailto:kody@kozaworld.com" class="hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text">
+      <a href="mailto:kody@kozaworld.com" class="hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text player2-font">
         Email
       </a>
-      <a href="https://kozacreations.itch.io" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text">
+      <a href="https://kozacreations.itch.io" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text player2-font">
         Itch.io
       </a>
     </div>
@@ -115,26 +109,26 @@
 
   <!-- Projects Section -->
   <section id="projects" class="min-h-screen bg-gray-900 py-16 flex flex-col items-center justify-center">
-    <h2 class="text-4xl font-bold text-white mb-8">PROJECTS</h2>
+    <h2 class="text-4xl font-bold text-white mb-8 player2-font">PROJECTS</h2>
     <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
       <div class="bg-gradient-to-br from-gray-800 to-gray-700 p-6 rounded-lg hover:shadow-xl hover:shadow-purple-500/20 transition-all">
-        <h3 class="text-xl font-bold mb-2 text-purple-400">TextRPG Maker</h3>
-        <p class="mb-4 text-gray-300">A powerful engine for creating text-based RPG adventures.</p>
-        <a href="https://kozacreations.itch.io/text-based-rpg-kozaengine" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300">
+        <h3 class="text-xl font-bold mb-2 text-purple-400 player2-font">TextRPG Maker</h3>
+        <p class="mb-4 text-gray-300 player2-font">A powerful engine for creating text-based RPG adventures.</p>
+        <a href="https://kozacreations.itch.io/text-based-rpg-kozaengine" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 player2-font">
           View Project
         </a>
       </div>
       <div class="bg-gradient-to-br from-gray-800 to-gray-700 p-6 rounded-lg hover:shadow-xl hover:shadow-purple-500/20 transition-all">
-        <h3 class="text-xl font-bold mb-2 text-purple-400">EoServ Private Server Launcher</h3>
-        <p class="mb-4 text-gray-300">Custom launcher for managing and connecting to private Endless Online servers.</p>
-        <a href="https://kozacreations.itch.io/eoserv-custom-launcher" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300">
+        <h3 class="text-xl font-bold mb-2 text-purple-400 player2-font">EoServ Private Server Launcher</h3>
+        <p class="mb-4 text-gray-300 player2-font">Custom launcher for managing and connecting to private Endless Online servers.</p>
+        <a href="https://kozacreations.itch.io/eoserv-custom-launcher" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 player2-font">
           View Project
         </a>
       </div>
       <div class="bg-gradient-to-br from-gray-800 to-gray-700 p-6 rounded-lg hover:shadow-xl hover:shadow-purple-500/20 transition-all">
-        <h3 class="text-xl font-bold mb-2 text-purple-400">Endless Online Encyclopedia</h3>
-        <p class="mb-4 text-gray-300">Comprehensive database and reference guide for Endless Online.</p>
-        <a href="https://kozacreations.itch.io/eoencyclopedia" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300">
+        <h3 class="text-xl font-bold mb-2 text-purple-400 player2-font">Endless Online Encyclopedia</h3>
+        <p class="mb-4 text-gray-300 player2-font">Comprehensive database and reference guide for Endless Online.</p>
+        <a href="https://kozacreations.itch.io/eoencyclopedia" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 player2-font">
           View Project
         </a>
       </div>
