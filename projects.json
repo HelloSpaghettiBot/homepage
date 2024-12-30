@@ -11,6 +11,11 @@
       "link": "https://kozacreations.itch.io/eoserv-custom-launcher"
     },
     {
+      "title": "EOLegends TCG",
+      "description": "A discord bot that allows users open packs, battle, collect cusom cards.",
+      "link": "https://github.com/KozaWorld/EOLegends-Card-Battler"
+    },
+    {
       "title": "Gamechat2Discord",
       "description": "A Discord bot that bridges game chat with Discord by monitoring screen regions and simulating keyboard input. ",
       "link": "https://github.com/KozaWorld/GameChat2Discord-Bot"
