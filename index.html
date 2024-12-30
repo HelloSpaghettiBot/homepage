@@ -6,14 +6,106 @@
   <title>KozaWorld Homepage</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
+  <style>
+    #gameCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 50;
+    }
+    
+    .hidden {
+      display: none;
+    }
 
+    .main-container {
+      transition: opacity 1s ease;
+    }
+
+    .gradient-text {
+      background: linear-gradient(45deg, #ff0080, #7928ca);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .gradient-text:hover {
+      text-shadow: 0 0 10px rgba(255, 0, 128, 0.5);
+      transform: scale(1.05);
+    }
+
+    .button-container {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .big-button {
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .big-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+    }
+
+    .card {
+      background: rgba(17, 24, 39, 0.8);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .exp-bar {
+      background: rgba(107, 114, 128, 0.3);
+      height: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .exp-fill {
+      background: linear-gradient(90deg, #7928ca, #ff0080);
+      height: 100%;
+      transition: width 0.5s ease;
+    }
+
+    .home-button {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(168, 85, 247, 0.8);
+      color: white;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 40;
+    }
+
+    .home-button:hover {
+      transform: scale(1.1);
+      background: rgba(168, 85, 247, 1);
+    }
+  </style>
+</head>
 <body class="bg-black text-white m-0 p-0">
-  <canvas id="gameCanvas" class="hidden fixed inset-0 z-50"></canvas>
+  <canvas id="gameCanvas" class="hidden"></canvas>
   <div class="main-container">
     <!-- Header Section -->
-    <section id="home" class="landing-area text-center relative flex flex-col items-center justify-center">
+    <section id="home" class="landing-area text-center relative flex flex-col items-center justify-center min-h-screen">
       <h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10">
         KOZA
         <span id="worldText" class="gradient-text color-change cursor-pointer">
@@ -21,7 +113,7 @@
         </span>
       </h1>
 
-      <!-- Buttons and Level/Experience Info under the title -->
+      <!-- Buttons and Level/Experience Info -->
       <div class="button-container mb-8">
         <a href="#projects" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition blinking-text big-button">
           PRESS START
@@ -34,11 +126,9 @@
       <!-- Level and Experience Card -->
       <div class="card mb-8">
         <div class="flex justify-between mb-4">
-          <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Loading..</span>
-          <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Loading..</span>
+          <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Level: Loading...</span>
+          <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Exp: Loading...</span>
         </div>
-
-        <!-- Experience Bar -->
         <div class="exp-bar mx-auto mb-4">
           <div id="exp-fill" class="exp-fill" style="width: 0%"></div>
         </div>
@@ -46,39 +136,42 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="bg-gray-900 flex flex-col items-center justify-center">
-      <h2 class="text-4xl font-bold text-white mb-8">PROJECTS</h2>
-      <div id="projects-grid" class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 px-4">
-        <!-- Projects will be loaded here dynamically -->
+    <section id="projects" class="bg-gray-900 py-20">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12">PROJECTS</h2>
+        <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <!-- Projects will be loaded here dynamically -->
+        </div>
       </div>
     </section>
 
-<!-- Connect with Me Section -->
-<section id="connect" class="bg-black text-white flex flex-col items-center justify-center w-full">
-  <div class="w-full max-w-4xl px-4 flex flex-col items-center text-center">
-    <div class="w-full text-center">
-      <h2 class="text-4xl font-bold mb-8 text-center w-full">CONNECT WITH ME</h2>
-    </div>
-    <div class="flex flex-col sm:flex-row gap-8 text-3xl items-center justify-center w-full">
-      <a href="https://twitter.com/Kodytron" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text">
-        Twitter
-      </a>
-      <a href="mailto:kody@kozaworld.com" class="w-full sm:w-auto text-center hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text">
-        Email
-      </a>
-      <a href="https://kozacreations.itch.io" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center hover:text-purple-400 transition-colors px-4 py-2 border-2 border-purple-600 rounded-full blinking-text">
-        Itch.io
-      </a>
-    </div>
+    <!-- Connect Section -->
+    <section id="connect" class="bg-black py-20">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-12">CONNECT WITH ME</h2>
+        <div class="flex flex-col sm:flex-row gap-8 justify-center">
+          <a href="https://twitter.com/Kodytron" target="_blank" rel="noopener noreferrer" 
+             class="px-6 py-3 border-2 border-purple-600 rounded-full text-xl hover:bg-purple-600 transition">
+            Twitter
+          </a>
+          <a href="mailto:kody@kozaworld.com" 
+             class="px-6 py-3 border-2 border-purple-600 rounded-full text-xl hover:bg-purple-600 transition">
+            Email
+          </a>
+          <a href="https://kozacreations.itch.io" target="_blank" rel="noopener noreferrer"
+             class="px-6 py-3 border-2 border-purple-600 rounded-full text-xl hover:bg-purple-600 transition">
+            Itch.io
+          </a>
+        </div>
+      </div>
+    </section>
   </div>
-</section>
 
-  <!-- Floating Home Button -->
-  <a href="#home" class="home-button">
-    ↑
-  </a>
+  <!-- Home Button -->
+  <a href="#home" class="home-button">↑</a>
 
-    <script>
+  <script>
+    // Game Classes
     class Particle {
       constructor(x, y, char) {
         this.x = x;
@@ -113,6 +206,7 @@
           y: (Math.random() - 0.5) * 4
         };
         this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.02;
         this.points = this.generatePoints();
       }
 
@@ -133,12 +227,28 @@
       update() {
         this.x += this.velocity.x;
         this.y += this.velocity.y;
-        this.rotation += 0.02;
+        this.rotation += this.rotationSpeed;
 
+        // Wrap around screen
         if (this.x < -50) this.x = this.canvas.width + 50;
         if (this.x > this.canvas.width + 50) this.x = -50;
         if (this.y < -50) this.y = this.canvas.height + 50;
         if (this.y > this.canvas.height + 50) this.y = -50;
+      }
+
+      draw(ctx) {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        ctx.strokeStyle = 'white';
+        ctx.beginPath();
+        ctx.moveTo(this.points[0].x, this.points[0].y);
+        this.points.forEach(point => {
+          ctx.lineTo(point.x, point.y);
+        });
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
       }
     }
 
@@ -151,6 +261,7 @@
         this.velocity = { x: 0, y: 0 };
         this.thrust = 0.5;
         this.rotationSpeed = 0.1;
+        this.friction = 0.99;
         this.bullets = [];
       }
 
@@ -158,6 +269,10 @@
         // Update position
         this.x += this.velocity.x;
         this.y += this.velocity.y;
+
+        // Apply friction
+        this.velocity.x *= this.friction;
+        this.velocity.y *= this.friction;
 
         // Wrap around screen
         if (this.x < 0) this.x = this.canvas.width;
@@ -170,6 +285,13 @@
           bullet.x += Math.cos(bullet.rotation) * 10;
           bullet.y += Math.sin(bullet.rotation) * 10;
           bullet.lifetime--;
+
+          // Wrap bullets around screen
+          if (bullet.x < 0) bullet.x = this.canvas.width;
+          if (bullet.x > this.canvas.width) bullet.x = 0;
+          if (bullet.y < 0) bullet.y = this.canvas.height;
+          if (bullet.y > this.canvas.height) bullet.y = 0;
+
           return bullet.lifetime > 0;
         });
       }
@@ -182,11 +304,40 @@
           lifetime: 50
         });
       }
+
+      draw(ctx) {
+        // Draw ship
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        ctx.strokeStyle = 'white';
+        ctx.beginPath();
+        ctx.moveTo(20, 0);
+        ctx.lineTo(-10, -10);
+        ctx.lineTo(-10, 10);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+
+        // Draw bullets
+        ctx.fillStyle = 'white';
+        this.bullets.forEach(bullet => {
+          ctx.beginPath();
+          ctx.arc(bullet.x, bullet.y, 2, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
     }
 
+    // Game Variables
     let gameActive = false;
-    let canvas, ctx, ship, asteroids, particles;
+    let canvas = null;
+    let ctx = null;
+    let ship = null;
+    let asteroids = [];
+    let particles = [];
     let keys = {};
+    let animationFrameId = null;
 
     function initGame() {
       canvas = document.getElementById('gameCanvas');
@@ -204,12 +355,14 @@
         if (e.code === 'Space') ship.shoot();
       });
 
+      gameActive = true;
       gameLoop();
     }
 
     function gameLoop() {
       if (!gameActive) return;
 
+      // Clear canvas
       ctx.fillStyle = 'black';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -221,43 +374,12 @@
         ship.velocity.y += Math.sin(ship.rotation) * ship.thrust;
       }
       ship.update();
-
-      // Draw ship
-      ctx.save();
-      ctx.translate(ship.x, ship.y);
-      ctx.rotate(ship.rotation);
-      ctx.strokeStyle = 'white';
-      ctx.beginPath();
-      ctx.moveTo(20, 0);
-      ctx.lineTo(-10, -10);
-      ctx.lineTo(-10, 10);
-      ctx.closePath();
-      ctx.stroke();
-      ctx.restore();
-
-      // Update and draw bullets
-      ctx.fillStyle = 'white';
-      ship.bullets.forEach(bullet => {
-        ctx.beginPath();
-        ctx.arc(bullet.x, bullet.y, 2, 0, Math.PI * 2);
-        ctx.fill();
-      });
+      ship.draw(ctx);
 
       // Update and draw asteroids
-      ctx.strokeStyle = 'white';
       asteroids.forEach(asteroid => {
         asteroid.update();
-        ctx.save();
-        ctx.translate(asteroid.x, asteroid.y);
-        ctx.rotate(asteroid.rotation);
-        ctx.beginPath();
-        ctx.moveTo(asteroid.points[0].x, asteroid.points[0].y);
-        asteroid.points.forEach(point => {
-          ctx.lineTo(point.x, point.y);
-        });
-        ctx.closePath();
-        ctx.stroke();
-        ctx.restore();
+        asteroid.draw(ctx);
       });
 
       // Update and draw particles
@@ -275,85 +397,96 @@
         return false;
       });
 
-      requestAnimationFrame(gameLoop);
+      animationFrameId = requestAnimationFrame(gameLoop);
     }
 
-    // Add event listener for the WORLD text
-    document.getElementById('worldText').addEventListener('click', () => {
-      if (!gameActive) {
-        const worldText = document.getElementById('worldText');
-        const rect = worldText.getBoundingClientRect();
-        const chars = 'WORLD'.split('');
-        
-        // Create explosion particles
-        chars.forEach((char, i) => {
-          const x = rect.left + (rect.width * (i + 1)) / (chars.length + 1);
-          const y = rect.top + rect.height / 2;
-          particles.push(new Particle(x, y, char));
-        });
-
-        // Hide the main content and show the game
-        document.querySelector('.main-container').style.opacity = '0';
-        setTimeout(() => {
-          document.querySelector('.main-container').style.display = 'none';
-          canvas.classList.remove('hidden');
-          gameActive = true;
-          initGame();
-        }, 1000);
+    // Window resize handler
+    window.addEventListener('resize', () => {
+      if (canvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
       }
     });
 
-    // Add ESC key handler to exit game
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && gameActive) {
-        gameActive = false;
-        canvas.classList.add('hidden');
-        document.querySelector('.main-container').style.display = 'block';
-        setTimeout(() => {
-          document.querySelector('.main-container').style.opacity = '1';
-        }, 0);
-      }
-    });
-    </script>
-    
-  <script>
-    // GitHub username
-    const githubUsername = 'KozaWorld';
+// Initialize game when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  const worldText = document.getElementById('worldText');
 
-    // Function to fetch GitHub data
-    async function fetchGitHubData() {
-      try {
-        const reposResponse = await fetch(`https://api.github.com/users/${githubUsername}/repos`);
-        const repos = await reposResponse.json();
-        const numberOfRepos = repos.length;
+  worldText.addEventListener('click', () => {
+    if (!gameActive) {
+      const rect = worldText.getBoundingClientRect();
+      const chars = 'WORLD'.split('');
 
-        const eventsResponse = await fetch(`https://api.github.com/users/${githubUsername}/events/public`);
-        const events = await eventsResponse.json();
-        const numberOfContributions = events.filter(event => event.type === "PushEvent").length;
+      // Create explosion particles
+      chars.forEach((char, i) => {
+        const x = rect.left + (rect.width * (i + 1)) / (chars.length + 1);
+        const y = rect.top + rect.height / 2;
+        particles.push(new Particle(x, y, char));
+      });
 
-        const projectXP = numberOfRepos * 50;
-        const contributionXP = numberOfContributions * 10;
-        const totalXP = projectXP + contributionXP;
-
-        let level = Math.floor(totalXP / 100);
-        let expToNextLevel = totalXP % 100;
-
-        document.getElementById("level").textContent = `Level: ${level}`;
-        document.getElementById("exp").textContent = `Exp: ${totalXP}`;
-        document.getElementById("exp-fill").style.width = `${(expToNextLevel / 100) * 100}%`;
-      } catch (error) {
-        console.error('Error fetching GitHub data:', error);
-      }
+      // Hide the main content and show the game
+      document.querySelector('.main-container').style.opacity = '0';
+      setTimeout(() => {
+        document.querySelector('.main-container').style.display = 'none';
+        canvas = document.getElementById('gameCanvas');
+        canvas.classList.remove('hidden');
+        initGame();
+      }, 1000);
     }
+  });
+});
 
-    // Function to load projects from JSON
-    async function loadProjects() {
-      try {
-        const response = await fetch('projects.json');
-        const data = await response.json();
-        const projectsGrid = document.getElementById('projects-grid');
-        
-        projectsGrid.innerHTML = data.projects.map(project => `
+// Add ESC key handler to exit game
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && gameActive) {
+    gameActive = false;
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+    }
+    canvas.classList.add('hidden');
+    document.querySelector('.main-container').style.display = 'block';
+    setTimeout(() => {
+      document.querySelector('.main-container').style.opacity = '1';
+    }, 0);
+  }
+});
+
+// GitHub integration code
+const githubUsername = 'KozaWorld';
+
+async function fetchGitHubData() {
+  try {
+    const reposResponse = await fetch(`https://api.github.com/users/${githubUsername}/repos`);
+    const repos = await reposResponse.json();
+    const numberOfRepos = repos.length;
+
+    const eventsResponse = await fetch(`https://api.github.com/users/${githubUsername}/events/public`);
+    const events = await eventsResponse.json();
+    const numberOfContributions = events.filter(event => event.type === "PushEvent").length;
+
+    const projectXP = numberOfRepos * 50;
+    const contributionXP = numberOfContributions * 10;
+    const totalXP = projectXP + contributionXP;
+
+    let level = Math.floor(totalXP / 100);
+    let expToNextLevel = totalXP % 100;
+
+    document.getElementById("level").textContent = `Level: ${level}`;
+    document.getElementById("exp").textContent = `Exp: ${totalXP}`;
+    document.getElementById("exp-fill").style.width = `${(expToNextLevel / 100) * 100}%`;
+  } catch (error) {
+    console.error('Error fetching GitHub data:', error);
+  }
+}
+
+// Function to load projects from JSON
+async function loadProjects() {
+  try {
+    const response = await fetch('projects.json');
+    const data = await response.json();
+    const projectsGrid = document.getElementById('projects-grid');
+
+    projectsGrid.innerHTML = data.projects.map(project => `
           <div class="bg-gradient-to-br from-gray-800 to-gray-700 p-6 rounded-lg hover:shadow-xl hover:shadow-purple-500/20 transition-all">
             <h3 class="text-xl font-bold mb-2 text-purple-400">${project.title}</h3>
             <p class="mb-4 text-gray-300">${project.description}</p>
@@ -362,14 +495,12 @@
             </a>
           </div>
         `).join('');
-      } catch (error) {
-        console.error('Error loading projects:', error);
-      }
-    }
+  } catch (error) {
+    console.error('Error loading projects:', error);
+  }
+}
 
-    // Initialize everything
-    fetchGitHubData();
-    loadProjects();
-  </script>
-</body>
-</html>
+// Initialize everything
+fetchGitHubData();
+loadProjects();
+</script> </body> </html>
