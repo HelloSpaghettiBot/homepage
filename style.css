@@ -1,3 +1,35 @@
+/* Base font for whole site */
+  * {
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  /* Fix section heights */
+  #home, #projects, #connect {
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  /* Fix connect section spacing */
+  #connect {
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Ensure contact buttons stack properly on mobile */
+  @media (max-width: 640px) {
+    #connect .flex {
+      flex-direction: column;
+      width: 100%;
+      gap: 1rem;
+    }
+
+    #connect a {
+      width: 100%;
+    }
+  }
+
 .glow {
   position: absolute;
   inset: 0;
