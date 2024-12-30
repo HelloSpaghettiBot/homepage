@@ -1,0 +1,19 @@
+{
+  "projects": [
+    {
+      "title": "TextRPG Maker",
+      "description": "A powerful engine for creating text-based RPG adventures.",
+      "link": "https://kozacreations.itch.io/text-based-rpg-kozaengine"
+    },
+    {
+      "title": "EoServ Private Server Launcher",
+      "description": "Custom launcher for managing and connecting to private Endless Online servers.",
+      "link": "https://kozacreations.itch.io/eoserv-custom-launcher"
+    },
+    {
+      "title": "Endless Online Encyclopedia",
+      "description": "Comprehensive database and reference guide for Endless Online.",
+      "link": "https://kozacreations.itch.io/eoencyclopedia"
+    }
+  ]
+}
