@@ -10,12 +10,13 @@
 </head>
 
 <body class="bg-black text-white m-0 p-0">
+  <canvas id="gameCanvas" class="hidden fixed inset-0 z-50"></canvas>
   <div class="main-container">
     <!-- Header Section -->
     <section id="home" class="landing-area text-center relative flex flex-col items-center justify-center">
       <h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10">
         KOZA
-        <span class="gradient-text color-change">
+        <span id="worldText" class="gradient-text color-change cursor-pointer">
           WORLD
         </span>
       </h1>
@@ -77,6 +78,244 @@
     ↑
   </a>
 
+    <script>
+    class Particle {
+      constructor(x, y, char) {
+        this.x = x;
+        this.y = y;
+        this.char = char;
+        this.velocity = {
+          x: (Math.random() - 0.5) * 10,
+          y: (Math.random() - 0.5) * 10
+        };
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.2;
+        this.alpha = 1;
+      }
+
+      update() {
+        this.x += this.velocity.x;
+        this.y += this.velocity.y;
+        this.rotation += this.rotationSpeed;
+        this.alpha -= 0.01;
+        return this.alpha > 0;
+      }
+    }
+
+    class Asteroid {
+      constructor(canvas) {
+        this.canvas = canvas;
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() < 0.5 ? -30 : canvas.height + 30;
+        this.size = Math.random() * 20 + 20;
+        this.velocity = {
+          x: (Math.random() - 0.5) * 4,
+          y: (Math.random() - 0.5) * 4
+        };
+        this.rotation = Math.random() * Math.PI * 2;
+        this.points = this.generatePoints();
+      }
+
+      generatePoints() {
+        const points = [];
+        const numPoints = 8;
+        for (let i = 0; i < numPoints; i++) {
+          const angle = (i / numPoints) * Math.PI * 2;
+          const radius = this.size * (0.8 + Math.random() * 0.4);
+          points.push({
+            x: Math.cos(angle) * radius,
+            y: Math.sin(angle) * radius
+          });
+        }
+        return points;
+      }
+
+      update() {
+        this.x += this.velocity.x;
+        this.y += this.velocity.y;
+        this.rotation += 0.02;
+
+        if (this.x < -50) this.x = this.canvas.width + 50;
+        if (this.x > this.canvas.width + 50) this.x = -50;
+        if (this.y < -50) this.y = this.canvas.height + 50;
+        if (this.y > this.canvas.height + 50) this.y = -50;
+      }
+    }
+
+    class Ship {
+      constructor(canvas) {
+        this.canvas = canvas;
+        this.x = canvas.width / 2;
+        this.y = canvas.height / 2;
+        this.rotation = -Math.PI / 2;
+        this.velocity = { x: 0, y: 0 };
+        this.thrust = 0.5;
+        this.rotationSpeed = 0.1;
+        this.bullets = [];
+      }
+
+      update() {
+        // Update position
+        this.x += this.velocity.x;
+        this.y += this.velocity.y;
+
+        // Wrap around screen
+        if (this.x < 0) this.x = this.canvas.width;
+        if (this.x > this.canvas.width) this.x = 0;
+        if (this.y < 0) this.y = this.canvas.height;
+        if (this.y > this.canvas.height) this.y = 0;
+
+        // Update bullets
+        this.bullets = this.bullets.filter(bullet => {
+          bullet.x += Math.cos(bullet.rotation) * 10;
+          bullet.y += Math.sin(bullet.rotation) * 10;
+          bullet.lifetime--;
+          return bullet.lifetime > 0;
+        });
+      }
+
+      shoot() {
+        this.bullets.push({
+          x: this.x + Math.cos(this.rotation) * 20,
+          y: this.y + Math.sin(this.rotation) * 20,
+          rotation: this.rotation,
+          lifetime: 50
+        });
+      }
+    }
+
+    let gameActive = false;
+    let canvas, ctx, ship, asteroids, particles;
+    let keys = {};
+
+    function initGame() {
+      canvas = document.getElementById('gameCanvas');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      ctx = canvas.getContext('2d');
+
+      ship = new Ship(canvas);
+      asteroids = Array(5).fill().map(() => new Asteroid(canvas));
+      particles = [];
+
+      document.addEventListener('keydown', e => keys[e.key] = true);
+      document.addEventListener('keyup', e => keys[e.key] = false);
+      document.addEventListener('keydown', e => {
+        if (e.code === 'Space') ship.shoot();
+      });
+
+      gameLoop();
+    }
+
+    function gameLoop() {
+      if (!gameActive) return;
+
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Update ship
+      if (keys['ArrowLeft']) ship.rotation -= ship.rotationSpeed;
+      if (keys['ArrowRight']) ship.rotation += ship.rotationSpeed;
+      if (keys['ArrowUp']) {
+        ship.velocity.x += Math.cos(ship.rotation) * ship.thrust;
+        ship.velocity.y += Math.sin(ship.rotation) * ship.thrust;
+      }
+      ship.update();
+
+      // Draw ship
+      ctx.save();
+      ctx.translate(ship.x, ship.y);
+      ctx.rotate(ship.rotation);
+      ctx.strokeStyle = 'white';
+      ctx.beginPath();
+      ctx.moveTo(20, 0);
+      ctx.lineTo(-10, -10);
+      ctx.lineTo(-10, 10);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.restore();
+
+      // Update and draw bullets
+      ctx.fillStyle = 'white';
+      ship.bullets.forEach(bullet => {
+        ctx.beginPath();
+        ctx.arc(bullet.x, bullet.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Update and draw asteroids
+      ctx.strokeStyle = 'white';
+      asteroids.forEach(asteroid => {
+        asteroid.update();
+        ctx.save();
+        ctx.translate(asteroid.x, asteroid.y);
+        ctx.rotate(asteroid.rotation);
+        ctx.beginPath();
+        ctx.moveTo(asteroid.points[0].x, asteroid.points[0].y);
+        asteroid.points.forEach(point => {
+          ctx.lineTo(point.x, point.y);
+        });
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+      });
+
+      // Update and draw particles
+      ctx.fillStyle = 'white';
+      particles = particles.filter(particle => {
+        if (particle.update()) {
+          ctx.save();
+          ctx.translate(particle.x, particle.y);
+          ctx.rotate(particle.rotation);
+          ctx.globalAlpha = particle.alpha;
+          ctx.fillText(particle.char, 0, 0);
+          ctx.restore();
+          return true;
+        }
+        return false;
+      });
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    // Add event listener for the WORLD text
+    document.getElementById('worldText').addEventListener('click', () => {
+      if (!gameActive) {
+        const worldText = document.getElementById('worldText');
+        const rect = worldText.getBoundingClientRect();
+        const chars = 'WORLD'.split('');
+        
+        // Create explosion particles
+        chars.forEach((char, i) => {
+          const x = rect.left + (rect.width * (i + 1)) / (chars.length + 1);
+          const y = rect.top + rect.height / 2;
+          particles.push(new Particle(x, y, char));
+        });
+
+        // Hide the main content and show the game
+        document.querySelector('.main-container').style.opacity = '0';
+        setTimeout(() => {
+          document.querySelector('.main-container').style.display = 'none';
+          canvas.classList.remove('hidden');
+          gameActive = true;
+          initGame();
+        }, 1000);
+      }
+    });
+
+    // Add ESC key handler to exit game
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && gameActive) {
+        gameActive = false;
+        canvas.classList.add('hidden');
+        document.querySelector('.main-container').style.display = 'block';
+        setTimeout(() => {
+          document.querySelector('.main-container').style.opacity = '1';
+        }, 0);
+      }
+    });
+    </script>
+    
   <script>
     // GitHub username
     const githubUsername = 'KozaWorld';
