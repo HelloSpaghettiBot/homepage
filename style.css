@@ -144,3 +144,19 @@ section {
     right: 1rem;
   }
 }
+.main-container {
+  transition: opacity 1s ease;
+}
+
+#gameCanvas {
+  background: black;
+}
+
+#worldText {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#worldText:hover {
+  transform: scale(1.1);
+}
