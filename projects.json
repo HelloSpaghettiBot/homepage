@@ -6,6 +6,16 @@
       "link": "https://kozacreations.itch.io/text-based-rpg-kozaengine"
     },
     {
+      "title": "Directory Scanner",
+      "description": "Scanner allows you to input a url and try's different terms from a json file to see if the url has a directory with those terms.",
+      "link": "https://hellobye.gumroad.com/l/sjebv"
+    },
+    {
+      "title": "Crypto Price Tracker",
+      "description": "A program that allows you to set a threshold and be alerted when the crypto goes above or below set threshold.",
+      "link": "https://hellobye.gumroad.com/l/uzmxre"
+    },
+    {
       "title": "EoServ Private Server Launcher",
       "description": "Custom launcher for managing and connecting to private Endless Online servers.",
       "link": "https://kozacreations.itch.io/eoserv-custom-launcher"
