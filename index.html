@@ -3,14 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Koza World</title>
+  <title>KozaWorld Homepage</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Press Start 2P', cursive;
-    }
-
     #gameCanvas {
       position: fixed;
       top: 0;
@@ -26,70 +22,14 @@
 
     .main-container {
       transition: opacity 1s ease;
-      min-height: 100vh;
-    }
-
-    /* Landing section styles */
-    .landing-area {
-      min-height: 100vh;
-      padding: 2rem;
-    }
-
-    /* Projects section styles */
-    #projects {
-      min-height: 100vh;
-      padding: 4rem 1rem;
-    }
-
-    /* Connect section styles */
-    #connect {
-      min-height: 100vh;
-      padding: 4rem 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    @keyframes colorChange {
-      0% {
-        background: linear-gradient(45deg, #ff0080, #7928ca);
-        -webkit-background-clip: text;
-        background-clip: text;
-      }
-      25% {
-        background: linear-gradient(45deg, #7928ca, #00ff00);
-        -webkit-background-clip: text;
-        background-clip: text;
-      }
-      50% {
-        background: linear-gradient(45deg, #00ff00, #0080ff);
-        -webkit-background-clip: text;
-        background-clip: text;
-      }
-      75% {
-        background: linear-gradient(45deg, #0080ff, #ff0080);
-        -webkit-background-clip: text;
-        background-clip: text;
-      }
-      100% {
-        background: linear-gradient(45deg, #ff0080, #7928ca);
-        -webkit-background-clip: text;
-        background-clip: text;
-      }
-    }
-
-    .color-change {
-      animation: colorChange 8s linear infinite;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
     }
 
     .gradient-text {
-      transition: all 0.3s ease;
+      background: linear-gradient(45deg, #ff0080, #7928ca);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      transition: all 0.3s ease;
     }
 
     .gradient-text:hover {
@@ -99,37 +39,14 @@
 
     .button-container {
       display: flex;
-      flex-direction: column;
       gap: 1rem;
       margin-top: 2rem;
-      width: 100%;
-      max-width: 300px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @media (min-width: 640px) {
-      .button-container {
-        flex-direction: row;
-        max-width: none;
-        justify-content: center;
-      }
     }
 
     .big-button {
       transition: all 0.3s ease;
       text-transform: uppercase;
       letter-spacing: 1px;
-      white-space: nowrap;
-      font-size: 0.875rem;
-      padding: 0.75rem 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .big-button {
-        font-size: 1rem;
-        padding: 1rem 2rem;
-      }
     }
 
     .big-button:hover {
@@ -143,8 +60,7 @@
       padding: 2rem;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       max-width: 400px;
-      width: 90%;
-      margin: 0 auto;
+      width: 100%;
     }
 
     .exp-bar {
@@ -183,47 +99,13 @@
       transform: scale(1.1);
       background: rgba(168, 85, 247, 1);
     }
-
-    /* Mobile optimizations */
-    @media (max-width: 640px) {
-      .text-5xl {
-        font-size: 2.5rem;
-      }
-      
-      .card {
-        padding: 1rem;
-      }
-      
-      .connect-buttons {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .connect-button {
-        width: 100%;
-        margin: 0.5rem 0;
-      }
-    }
-
-    /* Small text adjustments */
-    .small-text {
-      font-size: 0.75rem;
-      padding: 0.5rem 1rem;
-    }
-
-    @media (min-width: 768px) {
-      .small-text {
-        font-size: 1rem;
-        padding: 0.75rem 1.5rem;
-      }
-    }
   </style>
 </head>
 <body class="bg-black text-white m-0 p-0">
   <canvas id="gameCanvas" class="hidden"></canvas>
   <div class="main-container">
     <!-- Header Section -->
-    <section id="home" class="landing-area text-center relative flex flex-col items-center justify-center">
+    <section id="home" class="landing-area text-center relative flex flex-col items-center justify-center min-h-screen">
       <h1 class="text-5xl md:text-6xl font-bold mb-4 relative z-10">
         KOZA
         <span id="worldText" class="gradient-text color-change cursor-pointer">
@@ -241,9 +123,11 @@
         </a>
       </div>
 
+    
+    </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="bg-gray-900">
+    <section id="projects" class="bg-gray-900 py-20">
       <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-4xl font-bold text-center mb-12">PROJECTS</h2>
         <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -253,10 +137,9 @@
     </section>
 
     <!-- Connect Section -->
-<section id="connect" class="bg-black py-20">
-  <div class="max-w-6xl mx-auto px-4">
-    
-    
+    <section id="connect" class="bg-black py-20">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-12">Player 1</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Left Column: Photo and Stats Card -->
       <div class="flex flex-col items-center gap-8">
@@ -269,17 +152,16 @@
           />
         </div<h2 class="text-4xl font-bold text-center mb-12">ABOUT ME</h2>
 
-    <!-- Level and Experience Card -->
-      <div class="card mb-8">
-        <div class="flex justify-between mb-4">
-          <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Level: Loading...</span>
-          <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Exp: Loading...</span>
-        </div>
-        <div class="exp-bar mx-auto mb-4">
-          <div id="exp-fill" class="exp-fill" style="width: 0%"></div>
-        </div>
-      </div>
-    </section>
+  <!-- Level and Experience Card -->
+  <div class="card mb-8">
+    <div class="flex justify-between mb-4">
+      <span id="level" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Level: Loading...</span>
+      <span id="exp" class="bg-purple-500 px-4 py-2 rounded-full text-xl font-semibold small-text">Exp: Loading...</span>
+    </div>
+    <div class="exp-bar mx-auto mb-4">
+      <div id="exp-fill" class="exp-fill" style="width: 0%"></div>
+    </div>
+  </div>
 
       <!-- Right Column: About Me Text -->
       <div class="bg-gray-800 p-8 rounded-lg">
@@ -287,7 +169,8 @@
         <div class="space-y-4 text-gray-300">
           <p>
             I'm a passionate developer who loves creating interactive experiences and games. 
-            My journey in programming started with a simple "Hello World".
+            My journey in programming started with a simple "Hello World" and evolved into 
+            crafting complex digital worlds.
           </p>
           <p>
             When I'm not coding, you can find me exploring new technologies, contributing 
@@ -327,6 +210,7 @@
     </div>
   </div>
 </section>
+
   <!-- Home Button -->
   <a href="#home" class="home-button">↑</a>
 
