@@ -2,34 +2,6 @@
   * {
     font-family: 'Press Start 2P', cursive;
   }
-
-  /* Fix section heights */
-  #home, #projects, #connect {
-    min-height: 100vh;
-    width: 100%;
-  }
-
-  /* Fix connect section spacing */
-  #connect {
-    padding: 2rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Ensure contact buttons stack properly on mobile */
-  @media (max-width: 640px) {
-    #connect .flex {
-      flex-direction: column;
-      width: 100%;
-      gap: 1rem;
-    }
-
-    #connect a {
-      width: 100%;
-    }
-  }
-
 .glow {
   position: absolute;
   inset: 0;
@@ -51,17 +23,40 @@
   animation: blink 1.5s infinite;
 }
 
-@keyframes colorChange {
-  0% { color: #ff0000; }
-  15% { color: #ff7f00; }
-  30% { color: #ffff00; }
-  65% { color: #00ff00; }
-  100% { color: #0000ff; }
-}
+ @keyframes colorChange {
+    0% {
+      background: linear-gradient(45deg, #ff0080, #7928ca);
+    }
+    25% {
+      background: linear-gradient(45deg, #7928ca, #00ff00);
+    }
+    50% {
+      background: linear-gradient(45deg, #00ff00, #0080ff);
+    }
+    75% {
+      background: linear-gradient(45deg, #0080ff, #ff0080);
+    }
+    100% {
+      background: linear-gradient(45deg, #ff0080, #7928ca);
+    }
+  }
 
-.color-change {
-  animation: colorChange 4s infinite;
-}
+  .color-change {
+    animation: colorChange 8s linear infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all 0.3s ease;
+  }
+
+  .gradient-text {
+    transition: all 0.3s ease;
+  }
+
+  .gradient-text:hover {
+    text-shadow: 0 0 10px rgba(255, 0, 128, 0.5);
+    transform: scale(1.05);
+  }
 
 html {
   scroll-behavior: smooth;
@@ -176,6 +171,7 @@ section {
     right: 1rem;
   }
 }
+
 .main-container {
   transition: opacity 1s ease;
 }
