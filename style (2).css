@@ -1,0 +1,194 @@
+/* Base font for whole site */
+  * {
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  /* Fix section heights */
+  #home, #projects, #connect {
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  /* Fix connect section spacing */
+  #connect {
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Ensure contact buttons stack properly on mobile */
+  @media (max-width: 640px) {
+    #connect .flex {
+      flex-direction: column;
+      width: 100%;
+      gap: 1rem;
+    }
+
+    #connect a {
+      width: 100%;
+    }
+  }
+
+.glow {
+  position: absolute;
+  inset: 0;
+  blur: 100px;
+  opacity: 0.5;
+  transition: background 0.5s ease;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.blinking-text {
+  animation: blink 1.5s infinite;
+}
+
+@keyframes colorChange {
+  0% { color: #ff0000; }
+  15% { color: #ff7f00; }
+  30% { color: #ffff00; }
+  65% { color: #00ff00; }
+  100% { color: #0000ff; }
+}
+
+.color-change {
+  animation: colorChange 4s infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.small-text {
+  font-size: 0.875rem;
+}
+
+.big-button {
+  padding: 16px 32px;
+  font-size: 1.25rem;
+  width: 200px;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.exp-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #444;
+  border-radius: 5px;
+}
+
+.exp-fill {
+  height: 100%;
+  background-color: #8e44ad;
+  border-radius: 5px;
+}
+
+.card {
+  background-color: #222;
+  border-radius: 10px;
+  padding: 16px;
+  max-width: 400px;
+  margin: 0 auto;
+  border: 2px solid #8e44ad;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem 0;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+}
+
+.main-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.home-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #8e44ad;
+  color: white;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.home-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  background: #9b59b6;
+}
+
+@media (max-width: 640px) {
+  .landing-area {
+    padding: 20px;
+  }
+  .exp-bar {
+    width: 90%;
+  }
+  .big-button {
+    width: 100%;
+    padding: 12px;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .card {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .home-button {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+.main-container {
+  transition: opacity 1s ease;
+}
+
+#gameCanvas {
+  background: black;
+}
+
+#worldText {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#worldText:hover {
+  transform: scale(1.1);
+}
